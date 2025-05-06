@@ -19,12 +19,23 @@ Este repositorio contiene el notebook y las bases de datos utilizadas para el an
 ###  Incidentes viales
 - **Fuente**: Datos Abiertos de la Alcaldía de Medellín (MEDATA)
 - **Formato original**: `.csv` (separado por punto y coma `;`)
-- **Contenido**: Fecha, hora, gravedad, tipo de accidente, ubicación, comuna, barrio, coordenadas, etc.
+- **Contenido principal**:
+  - Fecha y hora del accidente
+  - Tipo y gravedad del siniestro
+  - Barrio, comuna, dirección
+  - Coordenadas geográficas
+  - Tipo de actor vial involucrado
 
-###  Clima histórico (API)
-- **Fuente**: [Open-Meteo API](https://open-meteo.com/en/docs/historical-weather-api)
-- **Formato**: `.xlsx` (exportado por día)
-- **Variables**: Temperatura, humedad, precipitación, visibilidad, viento, radiación solar, humedad del suelo, entre otras.
+- **Fuente**: [Open-Meteo – Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api)
+- **Formato**: `.xlsx` (descargado por fechas)
+- **Variables extraídas**:
+  - Temperatura máxima y mínima
+  - Humedad relativa
+  - Precipitaciones
+  - Radiación solar
+  - Visibilidad
+  - Humedad del suelo
+  - Velocidad del viento
 
 ---
 
@@ -39,6 +50,9 @@ Este repositorio contiene el notebook y las bases de datos utilizadas para el an
 - Conversión de texto a mayúsculas en columnas como `DIRECCION`.
 - Conversión de `FECHA` a tipo `datetime`, extrayendo componentes como año, mes, día y hora.
 - Eliminación de registros vacíos o con datos inconsistentes.
+ df['FECHA'] = pd.to_datetime(df['FECHA'])
+ df['DIRECCION'] = df['DIRECCION'].str.upper()
+ df['HORA'] = df['FECHA'].dt.hour
 
 ### 3. Integración de la API climática
 - Se utilizó la API de Open-Meteo para descargar datos meteorológicos históricos.
