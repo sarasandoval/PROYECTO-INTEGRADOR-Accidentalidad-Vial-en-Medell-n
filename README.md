@@ -50,9 +50,9 @@ Este repositorio contiene el notebook y las bases de datos utilizadas para el an
 - Conversión de texto a mayúsculas en columnas como `DIRECCION`.
 - Conversión de `FECHA` a tipo `datetime`, extrayendo componentes como año, mes, día y hora.
 - Eliminación de registros vacíos o con datos inconsistentes.
- df['FECHA'] = pd.to_datetime(df['FECHA'])
- df['DIRECCION'] = df['DIRECCION'].str.upper()
- df['HORA'] = df['FECHA'].dt.hour
+- df['FECHA'] = pd.to_datetime(df['FECHA'])
+- df['DIRECCION'] = df['DIRECCION'].str.upper()
+- df['HORA'] = df['FECHA'].dt.hour
 
 ### 3. Integración de la API climática
 - Se utilizó la API de Open-Meteo para descargar datos meteorológicos históricos.
